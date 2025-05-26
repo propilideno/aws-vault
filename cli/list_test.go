@@ -3,7 +3,7 @@ package cli
 import (
 	"github.com/alecthomas/kingpin/v2"
 
-	"github.com/byteness/keyring"
+	"github.com/99designs/keyring"
 )
 
 func ExampleListCommand() {

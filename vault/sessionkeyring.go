@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/byteness/keyring"
+	"github.com/99designs/keyring"
 	ststypes "github.com/aws/aws-sdk-go-v2/service/sts/types"
 )
 

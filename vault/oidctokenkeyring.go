@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/byteness/keyring"
+	"github.com/99designs/keyring"
 	"github.com/aws/aws-sdk-go-v2/service/ssooidc"
 )
 
