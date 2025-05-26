@@ -34,8 +34,7 @@ builds:
     flags:
       - -v
     ldflags:
-      - -s -w -X main.build={{.Version}}
-      - ./usemsan=-msan
+      - -s -w -X main.Version={{.Version}}
 
 upx:
   - enabled: true
