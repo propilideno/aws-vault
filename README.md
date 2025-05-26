@@ -4,7 +4,7 @@
 [![Continuous Integration](https://github.com/byteness/aws-vault/workflows/Continuous%20Integration/badge.svg)](https://github.com/byteness/aws-vault/actions)
 
 > [!NOTE]
-> This is a maintained fork of https://github.com/99designs/aws-vault which seems to be abandoned project.
+> This is a maintained fork of https://github.com/99designs/aws-vault which seems to be an abandoned project.
 > Contributions are welcome, but keep in mind this is a side project and maintained on best effort basis!
 
 AWS Vault is a tool to securely store and access AWS credentials in a development environment.
