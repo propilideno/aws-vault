@@ -1,9 +1,9 @@
 VERSION=$(shell git describe --tags --candidates=1 --dirty)
 BUILD_FLAGS=-ldflags="-X main.Version=$(VERSION)" -trimpath
-CERT_ID ?= Developer ID Application: 99designs Inc (NRM9HVJ62Z)
+CERT_ID ?= Developer ID Application: ByteNess (R)
 SRC=$(shell find . -name '*.go') go.mod
 INSTALL_DIR ?= ~/bin
-.PHONY: binaries clean release install
+.PHONY: binaries clean release install snapshot run
 
 ifeq ($(shell uname), Darwin)
 aws-vault: $(SRC)
@@ -23,7 +23,13 @@ binaries: aws-vault-linux-amd64 aws-vault-linux-arm64 aws-vault-linux-ppc64le aw
 dmgs: aws-vault-darwin-amd64.dmg aws-vault-darwin-arm64.dmg
 
 clean:
-	rm -f ./aws-vault ./aws-vault-*-* ./SHA256SUMS
+	rm -rf ./aws-vault ./aws-vault-*-* ./SHA256SUMS dist/
+
+snapshot: clean ## Build local snapshot
+	goreleaser build --clean --snapshot --single-target
+
+run:
+	go run .
 
 release: binaries dmgs SHA256SUMS
 
