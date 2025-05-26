@@ -26,7 +26,7 @@ jobs:
           go-version-file: 'go.mod'
           check-latest: true
       - name: Run tests
-        run: go test -race ./...
+        run: make test #go test -race ./...
   lint:
     permissions:
       contents: read  # for actions/checkout to fetch code
@@ -43,7 +43,9 @@ jobs:
           #go-version: '1.20'
           go-version-file: 'go.mod'
           check-latest: true
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v6.3.2
-        with:
-          version: v1.52.0
+      - name: Lint
+        run: make lint
+      #- name: golangci-lint
+      #  uses: golangci/golangci-lint-action@v6.3.2
+      #  with:
+      #    version: v1.52.0
