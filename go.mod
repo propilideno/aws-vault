@@ -1,4 +1,4 @@
-module aws-vault/v7
+module github.com/byteness/aws-vault/v7
 
 go 1.24
 
