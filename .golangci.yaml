@@ -1,5 +1,10 @@
 version: "2"
 linters:
+  settings:
+    depguard:
+      rules:
+        main:
+          list-mode: lax
   enable:
     - bodyclose
     - contextcheck
