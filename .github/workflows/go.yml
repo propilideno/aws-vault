@@ -44,6 +44,6 @@ jobs:
           go-version-file: 'go.mod'
           check-latest: true
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v8
+        uses: golangci/golangci-lint-action@v6.3.2
         with:
-          version: latest #v1.52.0
+          version: v1.52.0
