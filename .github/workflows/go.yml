@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+env:
+  GOTELEMETRY: off
+  CGO_ENABLED: 0
+
 jobs:
   test:
     name: test
@@ -15,10 +19,12 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
-          go-version: '1.20'
-      - uses: actions/checkout@v3
+          #go-version: '1.20'
+          go-version-file: 'go.mod'
+          check-latest: true
+      - uses: actions/checkout@v4
       - name: Run tests
         run: go test -race ./...
   lint:
@@ -31,11 +37,13 @@ jobs:
         os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v5
         with:
-          go-version: '1.20'
-      - uses: actions/checkout@v3
+          #go-version: '1.20'
+          go-version-file: 'go.mod'
+          check-latest: true
+      - uses: actions/checkout@v4
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v3.4.0
+        uses: golangci/golangci-lint-action@v8
         with:
-          version: v1.52.0
+          version: latest #v1.52.0
