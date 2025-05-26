@@ -9,7 +9,6 @@ linters:
     - errchkjson
     - errname
     - exhaustive
-    - exportloopref
     - govet
     - makezero
     - misspell
