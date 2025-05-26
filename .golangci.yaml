@@ -10,7 +10,7 @@ linters:
     - errname
     - exhaustive
     - exportloopref
-    - gofmt
+    - govet
     - goimports
     - makezero
     - misspell
