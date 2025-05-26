@@ -31,6 +31,18 @@ snapshot: clean ## Build local snapshot
 run:
 	go run .
 
+test: ## Run tests
+	go test -v ./...
+
+fmt: **/*.go ## Formt Golang code
+	go fmt ./...
+
+lint:
+	golint ./...
+
+vet:
+	go vet -all ./...
+
 release: binaries dmgs SHA256SUMS
 
 	@echo "\nTo create a new release run:\n\n    gh release create --title $(VERSION) $(VERSION) \

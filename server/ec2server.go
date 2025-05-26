@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/byteness/aws-vault/v7/iso8601"
 	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/byteness/aws-vault/v7/iso8601"
 )
 
 const ec2CredentialsServerAddr = "127.0.0.1:9099"
@@ -48,7 +48,7 @@ func startEc2CredentialsServer(credsProvider aws.CredentialsProvider, region str
 
 	// used by AWS SDK to determine region
 	router.HandleFunc("/latest/dynamic/instance-identity/document", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, `{"region": "`+region+`"}`)
+		fmt.Fprintf(w, `{"region": "%s"}`, region)
 	})
 
 	router.HandleFunc("/latest/meta-data/iam/security-credentials/local-credentials", credsHandler(credsProvider))
