@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/99designs/aws-vault/v7/prompt"
-	"github.com/99designs/aws-vault/v7/vault"
-	"github.com/99designs/keyring"
+	"github.com/byteness/aws-vault/v7/prompt"
+	"github.com/byteness/aws-vault/v7/vault"
+	"github.com/byteness/keyring"
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/aws/aws-sdk-go-v2/aws"
 )

@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/99designs/aws-vault/v7/cli"
+	"github.com/byteness/aws-vault/v7/cli"
 	"github.com/alecthomas/kingpin/v2"
 )
 

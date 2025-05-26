@@ -8,9 +8,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/99designs/aws-vault/v7/iso8601"
-	"github.com/99designs/aws-vault/v7/vault"
-	"github.com/99designs/keyring"
+	"github.com/byteness/aws-vault/v7/iso8601"
+	"github.com/byteness/aws-vault/v7/vault"
+	"github.com/byteness/keyring"
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	ini "gopkg.in/ini.v1"

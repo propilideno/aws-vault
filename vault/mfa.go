@@ -8,7 +8,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/99designs/aws-vault/v7/prompt"
+	"github.com/byteness/aws-vault/v7/prompt"
 	"github.com/aws/aws-sdk-go-v2/aws"
 )
 
