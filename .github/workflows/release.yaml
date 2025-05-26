@@ -10,6 +10,9 @@ env:
   GOTELEMETRY: off
   CGO_ENABLED: 0
 
+permissions:
+  contents: write
+
 name: Release
 jobs:
   release:
