@@ -5,6 +5,8 @@ linters:
       rules:
         main:
           list-mode: lax
+          files:
+            - $all
   enable:
     - bodyclose
     - contextcheck
