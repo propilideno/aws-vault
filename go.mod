@@ -16,7 +16,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20
 	github.com/mattn/go-tty v0.0.7
 	github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966
-	golang.org/x/term v0.6.0
+	golang.org/x/term v0.32.0
 	gopkg.in/ini.v1 v1.67.0
 )
 
@@ -36,5 +36,5 @@ require (
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
 	github.com/mtibben/percent v0.2.1 // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
-	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/sys v0.33.0 // indirect
 )
