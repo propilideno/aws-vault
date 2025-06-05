@@ -29,7 +29,7 @@ builds:
       - darwin_amd64
       - darwin_arm64
     env:
-      - CGO_ENABLED=0
+      - CGO_ENABLED=1
       - GOTELEMETRY="off"
     flags:
       - -v
@@ -38,7 +38,7 @@ builds:
 
 upx:
   - enabled: true
-    goos: [linux, windows] # might break macOS
+    #goos: [linux, windows]
 
 archives:
   - id: aws-vault
