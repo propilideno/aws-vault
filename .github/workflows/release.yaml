@@ -76,12 +76,13 @@ jobs:
 
       - name: Generate SHA256 checksums
         run: |
-          cp dist/*aws-vault-* .
+          cp dist/aws-vault-* .
+          chmod +x dist/* aws-vault-*
           make aws-vault_sha256_checksums.txt
           cp aws-vault_sha256_checksums.txt dist/
 
       - name: Compress binaries with upx
-        run: upx dist/*
+        run: upx dist/aws-vault-{linux,windows-amd64}*
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

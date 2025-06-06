@@ -7,11 +7,11 @@ INSTALL_DIR ?= ~/bin
 
 ifeq ($(shell uname), Darwin)
 aws-vault: $(SRC)
-	go build -ldflags="-X main.Version=$(VERSION)" -o $@ .
+	go build -ldflags="-s -w -X main.Version=$(VERSION)" -o $@ .
 	codesign --options runtime --timestamp --sign "$(CERT_ID)" $@
 else
 aws-vault: $(SRC)
-	go build -ldflags="-X main.Version=$(VERSION)" -o $@ .
+	go build -ldflags="-s -w -X main.Version=$(VERSION)" -o $@ .
 endif
 
 install: aws-vault
@@ -59,7 +59,7 @@ release: binaries SHA256SUMS
 
 	@echo "\nTo update homebrew-cask run:\n\n    brew bump-cask-pr --version $(shell echo $(VERSION) | sed 's/v\(.*\)/\1/') aws-vault\n"
 
-ubuntu-latest: aws-vault-linux-amd64 aws-vault-linux-arm64 aws-vault-windows-386.exe aws-vault-windows-arm64.exe
+ubuntu-latest: aws-vault-linux-amd64 aws-vault-linux-arm64 aws-vault-windows-amd64.exe aws-vault-windows-arm64.exe
 
 macos-latest: aws-vault-darwin-amd64 aws-vault-darwin-arm64
 
@@ -86,6 +86,9 @@ aws-vault-linux-arm7: $(SRC)
 
 aws-vault-windows-386.exe: $(SRC)
 	GOOS=windows GOARCH=386 go build $(BUILD_FLAGS) -o $@ .
+
+aws-vault-windows-amd64.exe: $(SRC)
+	GOOS=windows GOARCH=amd64 go build $(BUILD_FLAGS) -o $@ .
 
 aws-vault-windows-arm64.exe: $(SRC)
 	GOOS=windows GOARCH=arm64 go build $(BUILD_FLAGS) -o $@ .
