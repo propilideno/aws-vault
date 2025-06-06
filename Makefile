@@ -1,5 +1,5 @@
 VERSION=$(shell git describe --tags --candidates=1 --dirty)
-BUILD_FLAGS=-ldflags="-X main.Version=$(VERSION)" -trimpath
+BUILD_FLAGS=-ldflags="-s -w -X main.Version=$(VERSION)" -trimpath
 CERT_ID ?= Developer ID Application: ByteNess (R)
 SRC=$(shell find . -name '*.go') go.mod
 INSTALL_DIR ?= ~/bin
