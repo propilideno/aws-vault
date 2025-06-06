@@ -65,6 +65,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install upx
+        run: sudo apt-get update && sudo apt-get install -y upx
+
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
@@ -76,6 +79,9 @@ jobs:
           cp dist/*aws-vault-* .
           make aws-vault_sha256_checksums.txt
           cp aws-vault_sha256_checksums.txt dist/
+
+      - name: Compress binaries with upx
+        run: upx dist/*
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
