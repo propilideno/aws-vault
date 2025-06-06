@@ -84,8 +84,8 @@ jobs:
             dist/**
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
-          body: "Changelog of release ${{ github.ref_name }}."
-          append_body: true
+          #body: "Changelog of release ${{ github.ref_name }}."
+          #append_body: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
