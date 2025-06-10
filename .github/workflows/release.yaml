@@ -85,7 +85,7 @@ jobs:
         run: upx dist/aws-vault-{linux,windows-amd64}*
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v2.2.2
         with:
           files: |
             dist/**
