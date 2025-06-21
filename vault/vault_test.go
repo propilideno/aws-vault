@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/99designs/keyring"
+	"github.com/byteness/keyring"
 	"github.com/byteness/aws-vault/v7/vault"
 )
 
