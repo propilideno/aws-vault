@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/99designs/keyring"
+	"github.com/byteness/keyring"
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/byteness/aws-vault/v7/iso8601"
