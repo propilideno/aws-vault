@@ -11,7 +11,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sso v1.25.4
 	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.30.2
 	github.com/aws/aws-sdk-go-v2/service/sts v1.34.0
-	github.com/byteness/keyring v1.2.3
+	github.com/byteness/keyring v1.2.4
 	github.com/google/go-cmp v0.7.0
 	github.com/mattn/go-isatty v0.0.20
 	github.com/mattn/go-tty v0.0.7
@@ -31,9 +31,9 @@ require (
 	github.com/aws/smithy-go v1.22.4 // indirect
 	github.com/byteness/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/byteness/percent v0.2.2 // indirect
-	github.com/danieljoos/wincred v1.1.2 // indirect
-	github.com/dvsekhvalnov/jose2go v1.6.0 // indirect
-	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
+	github.com/danieljoos/wincred v1.2.2 // indirect
+	github.com/dvsekhvalnov/jose2go v1.8.0 // indirect
+	github.com/godbus/dbus v4.1.0+incompatible // indirect
 	github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
 	golang.org/x/sys v0.33.0 // indirect
