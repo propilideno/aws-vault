@@ -15,7 +15,9 @@ Check out the [announcement blog post](https://99designs.com.au/tech-blog/blog/2
 
 ## Installing
 
-You can install AWS Vault by downloading the [latest release](https://github.com/byteness/aws-vault/releases/latest)
+You can install AWS Vault:
+- by downloading the [latest release](https://github.com/byteness/aws-vault/releases/latest)
+- using [Homebrew](https://formulae.brew.sh/formula/aws-vault): `brew install aws-vault`
 
 ## Documentation
 
