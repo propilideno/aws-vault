@@ -11,13 +11,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/byteness/keyring"
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	"github.com/byteness/aws-vault/v7/vault"
+	"github.com/byteness/keyring"
 	"github.com/skratchdot/open-golang/open"
 )
 
@@ -46,6 +46,7 @@ func ConfigureLoginCommand(app *kingpin.Application, a *AwsVault) {
 
 	cmd.Flag("no-autologout", "Don't auto logout when starting a new login").
 		Short('a').
+		Envar("AWS_VAULT_NO_AUTOLOGOUT").
 		BoolVar(&input.NoAutoLogout)
 
 	cmd.Flag("mfa-token", "The MFA token to use").

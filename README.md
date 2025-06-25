@@ -140,6 +140,12 @@ Here's what you can expect from aws-vault
 | `aws-vault exec bar-role2`               | session-token + role + role | session-token | Yes |
 | `aws-vault exec bar-role2 --no-session`  | role + role                 | role          | Yes |
 
+## Auto-logout
+
+Since v7.3+ `aws-vault` will automatically try to do a logout first before login when executing `aws-vault login <profile>`.
+
+This behavour can be disabled using `--no-autologout` or `-a` flags! Read more in [USAGE.md](./USAGE.md) file.
+
 ## Development
 
 The [macOS release builds](https://github.com/byteness/aws-vault/releases) are code-signed to avoid extra prompts in Keychain. You can verify this with:
