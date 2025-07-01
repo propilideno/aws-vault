@@ -87,7 +87,7 @@ func ConfigureLoginCommand(app *kingpin.Application, a *AwsVault) {
 	})
 }
 
-func getCredsProvider(input LoginCommandInput, config *vault.ProfileConfig, keyring keyring.Keyring) (credsProvider aws.CredentialsProvider, err error) {
+func getCredsProvider(input LoginCommandInput, config *vault.ProfileConfig, f *vault.ConfigFile, keyring keyring.Keyring) (credsProvider aws.CredentialsProvider, err error) {
 	if input.ProfileName == "" {
 		// When no profile is specified, source credentials from the environment
 		configFromEnv, err := awsconfig.NewEnvConfig()
@@ -96,7 +96,32 @@ func getCredsProvider(input LoginCommandInput, config *vault.ProfileConfig, keyr
 		}
 
 		if configFromEnv.Credentials.AccessKeyID == "" {
-			return nil, fmt.Errorf("argument 'profile' not provided, nor any AWS env vars found. Try --help")
+			// If no credentials from the environment ask for profile
+			ProfileName, err := pickAwsProfile(f.ProfileNames())
+
+			if err != nil {
+				return nil, fmt.Errorf("unable to select a 'profile', nor any AWS env vars found. Try --help: %w", err)
+			}
+
+			// Load config from selected AWS profile
+			config, err := vault.NewConfigLoader(input.Config, f, ProfileName).GetProfileConfig(ProfileName)
+			if err != nil {
+				return nil, fmt.Errorf("Error loading config: %w", err)
+			}
+
+			// Use selected profile from the AWS config file
+			ckr := &vault.CredentialKeyring{Keyring: keyring}
+			t := vault.TempCredentialsCreator{
+				Keyring:                   ckr,
+				DisableSessions:           input.NoSession,
+				DisableSessionsForProfile: config.ProfileName,
+			}
+			credsProvider, err = t.GetProviderForProfile(config)
+			if err != nil {
+				return nil, fmt.Errorf("profile %s: %w", ProfileName, err)
+			}
+
+			return credsProvider, err
 		}
 
 		credsProvider = credentials.StaticCredentialsProvider{Value: configFromEnv.Credentials}
@@ -125,7 +150,7 @@ func LoginCommand(ctx context.Context, input LoginCommandInput, f *vault.ConfigF
 		return fmt.Errorf("Error loading config: %w", err)
 	}
 
-	credsProvider, err := getCredsProvider(input, config, keyring)
+	credsProvider, err := getCredsProvider(input, config, f, keyring)
 	if err != nil {
 		return err
 	}
