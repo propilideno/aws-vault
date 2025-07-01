@@ -417,6 +417,8 @@ The minimal IAM policy required to rotate your own credentials is:
 }
 ```
 
+> [!TIP]
+> If you omit AWS profile name `aws-vault` will ask you to select from the list of configured profiles in AWS config - similar to when logging into AWS Console.
 
 ## Managing Sessions
 
