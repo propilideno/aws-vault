@@ -432,15 +432,19 @@ Using `--` signifies the end of the `aws-vault` options, and allows the shell au
 
 If you use `exec` without specifying a command, AWS Vault will create a new interactive subshell. Note that when creating an interactive subshell, bash, zsh and other POSIX shells will execute the `~/.bashrc` or `~/.zshrc` file. If you have local variables, functions or aliases (for example your `PS1` prompt), ensure that they are defined in the rc file so they get executed when the subshell begins.
 
-### Logging into AWS console
+> [!TIP]
+> If you omit AWS profile name `aws-vault` will ask you to select from the list of configured profiles in AWS config - similar to when logging into AWS Console.
+> This only works when spawning a new shell and not when running commands using `--` !
+
+### Logging into AWS Console
 
 You can use the `aws-vault login` command to open a browser window and login to AWS Console for a given profile/account:
 ```shell
-$ aws-vault login work
+$ aws-vault login myprofile
 ```
 
 > [!NOTE]
-> When using multi-session support in AWS Management console you might need to disable auto-logout using `--no-autologout` or `-a`.
+> When using multi-session support in AWS Management Console you might need to disable auto-logout using `--no-autologout` or `-a`.
 > Otherwise URL redirect won't work and you'll end up with HTTP/400 response.
 
 If you have credentials already available in your environment, `aws-vault` will use these credentials to sign you in to the AWS console.
@@ -453,7 +457,7 @@ $ aws-vault login
 ```
 
 > [!TIP]
-> If you omit providing AWS profile name and don't have any credentials already available in your environment, `aws-vault` will ask you to select from the list of configured profiles in AWS config.
+> If you omit AWS profile name and don't have any credentials already available in your environment, `aws-vault` will ask you to select from the list of configured profiles in AWS config.
 
 ```shell
 ? Choose AWS profile:  [Use arrows to move, type to filter]
