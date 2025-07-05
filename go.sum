@@ -44,8 +44,10 @@ github.com/aymanbagabas/go-udiff v0.2.0 h1:TK0fH4MteXUDspT88n8CKzvK0X9O2xu9yQjWp
 github.com/aymanbagabas/go-udiff v0.2.0/go.mod h1:RE4Ex0qsGkTAJoQdQQCA0uG+nAzJO/pI/QwceO5fgrA=
 github.com/byteness/go-keychain v0.0.0-20191008050251-8e49817e8af4 h1:HFl8GFmwK19hYuXB8OQ0rTO9WOCgZY9JUy964zaYawY=
 github.com/byteness/go-keychain v0.0.0-20191008050251-8e49817e8af4/go.mod h1:9HlL8SWBRtCZE7sCNq+c3//H/oHywgSwtocmPTdOij8=
-github.com/byteness/keyring v1.3.0 h1:+VVNZGqSkmNpzz3nbxAEOeqLKbAlrKb8w50iRe7CQBM=
-github.com/byteness/keyring v1.3.0/go.mod h1:bIX82Syf6QKi2BoTgl4/s5bYjb3PH+ZqbDbBISMLAKY=
+github.com/byteness/go-libsecret v0.0.0-20250705200722-75549abfe79c h1:acX3x2Ka/6jQt3inHLNUuL1IKxb/j4dNMbuL6B/N324=
+github.com/byteness/go-libsecret v0.0.0-20250705200722-75549abfe79c/go.mod h1:eVg/Qgq8PRiBljsgvBLlVpMSrLecEY8pINiVRKQYYdc=
+github.com/byteness/keyring v1.3.1 h1:TcLJFyasrVr3jFS27RAM7mmnQbR6iNr+rqU+EEIoyJk=
+github.com/byteness/keyring v1.3.1/go.mod h1:q9VT1fwDemDLTXziMqX3OaWivdFq8kF7NhknCtm+RfY=
 github.com/byteness/percent v0.2.2 h1:vnIFh8WBR1xoC+U2etz0EMB1cgp+vsK6vynqTCeDziU=
 github.com/byteness/percent v0.2.2/go.mod h1:nwavge92FhIyfnldz4YWZD8uxPVvdh8NlzLRd1VYRDs=
 github.com/catppuccin/go v0.3.0 h1:d+0/YicIq+hSTo5oPuRi5kOpqkVA5tAsU6dNhvRu+aY=
@@ -92,14 +94,10 @@ github.com/dvsekhvalnov/jose2go v1.8.0 h1:LqkkVKAlHFfH9LOEl5fe4p/zL02OhWE7pCufMB
 github.com/dvsekhvalnov/jose2go v1.8.0/go.mod h1:QsHjhyTlD/lAVqn/NSbVZmSCGeDehTB/mPZadG+mhXU=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f h1:Y/CXytFA4m6baUTXGLOoWe4PQhGxaX0KpnayAqC48p4=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod h1:vw97MGsxSvLiUE2X8qFplwetxpGLQrlU1Q9AUEIzCaM=
-github.com/godbus/dbus v4.1.0+incompatible h1:WqqLRTsQic3apZUK9qC5sGNfXthmPXzUZ7nQPrNITa4=
-github.com/godbus/dbus v4.1.0+incompatible/go.mod h1:/YcGZj5zSblfDWMMoOzV4fas9FZnQYTkDnsGvmh2Grw=
 github.com/godbus/dbus/v5 v5.1.0 h1:4KLkAxT3aOY8Li4FRJe/KvhoNFFxo0m6fNuFUO8QJUk=
 github.com/godbus/dbus/v5 v5.1.0/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
 github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
-github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c h1:6rhixN/i8ZofjG1Y75iExal34USq5p+wiN1tpie8IrU=
-github.com/gsterjov/go-libsecret v0.0.0-20161001094733-a6f4afe4910c/go.mod h1:NMPJylDgVpX0MLRlPy15sqSwOFv/U1GZ2m21JhFfek0=
 github.com/hinshun/vt10x v0.0.0-20220119200601-820417d04eec h1:qv2VnGeEQHchGaZ/u7lxST/RaJw+cv273q79D81Xbog=
 github.com/hinshun/vt10x v0.0.0-20220119200601-820417d04eec/go.mod h1:Q48J4R4DvxnHolD5P8pOtXigYlRuPLGl6moFx3ulM68=
 github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 h1:Z9n2FFNUXsshfwJMBgNA0RU6/i7WVaAegv3PtuIHPMs=
