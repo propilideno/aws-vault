@@ -671,20 +671,21 @@ Yubikeys can be used with AWS Vault via Yubikey's OATH-TOTP support. TOTP is nec
 
 ### Prerequisites
  1. [A Yubikey that supports OATH-TOTP](https://support.yubico.com/support/solutions/articles/15000006419-using-your-yubikey-with-authenticator-codes)
- 2. `ykman`, the [YubiKey Manager CLI](https://github.com/Yubico/yubikey-manager) tool.
+ 1. `ykman`, the [YubiKey Manager CLI](https://github.com/Yubico/yubikey-manager) tool.
 
 You can verify these prerequisites by running `ykman info` and checking `OATH` is enabled.
 
 ### Setup
- 1. Log into the AWS web console with your IAM user credentials, and navigate to  _My Security Credentials_
- 2. Under _Multi-factor authentication (MFA)_, click `Manage MFA device` and add a Virtual MFA device
- 3. Instead of showing the QR code, click on `Show secret key` and copy the key.
- 4. On a command line, run:
+ 1. Log into the AWS Management Console with your IAM user credentials, and navigate to IAM, Users and pick your user.
+ 1. Select the tab _Security Credentials_.
+ 1. Under _Multi-factor authentication (MFA)_, click `Assign MFA device` and add a _Authenticator app_ MFA device.
+ 1. Instead of showing the QR code, click on `Show secret key` and copy the key.
+ 1. On a command line, run:
     ```shell
     ykman oath accounts add -t arn:aws:iam::${ACCOUNT_ID}:mfa/${MFA_DEVICE_NAME}
     ```
     replacing `${ACCOUNT_ID}` with your AWS account ID and `${MFA_DEVICE_NAME}` with the name you gave to the MFA device. It will prompt you for a base32 text and you can input the key from step 3. Notice the above command uses `-t` which requires you to touch your YubiKey to generate authentication codes.
- 5. Now you have to enter two consecutive MFA codes into the AWS website to assign your key to your AWS login. Just run `ykman oath accounts code arn:aws:iam::${ACCOUNT_ID}:mfa/${MFA_DEVICE_NAME}` to get an authentication code. The codes are re-generated every 30 seconds, so you have to run this command twice with about 30 seconds in between to get two distinct codes. Enter the two codes in the AWS form and click `Assign MFA`.
+ 1. Now you have to enter two consecutive MFA codes into the AWS website to assign your key to your AWS login. Just run `ykman oath accounts code arn:aws:iam::${ACCOUNT_ID}:mfa/${MFA_DEVICE_NAME}` to get an authentication code. The codes are re-generated every 30 seconds, so you have to run this command twice with about 30 seconds in between to get two distinct codes. Enter the two codes in the AWS form and click `Assign MFA`.
 
 A script can be found at [contrib/scripts/aws-iam-create-yubikey-mfa.sh](contrib/scripts/aws-iam-create-yubikey-mfa.sh) to automate the process. Note that this script requires your `$MFA_DEVICE_NAME` to be your IAM username as the `aws iam enable-mfa-device` command in the CLI does not yet offer specifying the name. When only one MFA device was allowed per IAM user, the `$MFA_DEVICE_NAME` would always be your IAM username.
 
