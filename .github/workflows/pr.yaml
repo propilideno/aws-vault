@@ -19,3 +19,13 @@ jobs:
           add_label: 'true'
           #custom_labels: '{"feat": "feature", "fix": "fix", "docs": "documentation", "test": "test", "ci": "CI/CD", "refactor": "refactor", "perf": "performance", "chore": "chore", "revert": "revert", "wip": "WIP"}'
           #add_scope_label: 'true'
+  labeler:
+    name: Label PRs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # This is required for the label PR action
+      pull-requests: write # This is required for the label PR action
+    steps:
+      - name: Label PRs
+        id: label-prs
+        uses: actions/labeler@v5
