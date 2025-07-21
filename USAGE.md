@@ -273,7 +273,7 @@ WARNING: Use of this option runs against security best practices. It is recommen
 To configure the default flag values of `aws-vault` and its subcommands:
 * `AWS_VAULT_BACKEND`: Secret backend to use (see the flag `--backend`)
 * `AWS_VAULT_KEYCHAIN_NAME`: Name of macOS keychain to use (see the flag `--keychain`)
-* `AWS_VAULT_NO_AUTOLOGOUT`: Disable autologout when doing `login` (see the flag `--no-autologout`)
+* `AWS_VAULT_AUTO_LOGOUT`: Enable auto-logout when doing `login` (see the flag `--auto-logout`)
 * `AWS_VAULT_PROMPT`: Prompt driver to use (see the flag `--prompt`)
 * `AWS_VAULT_PASS_PASSWORD_STORE_DIR`: Pass password store directory (see the flag `--pass-dir`)
 * `AWS_VAULT_PASS_CMD`: Name of the pass executable (see the flag `--pass-cmd`)
@@ -447,7 +447,7 @@ $ aws-vault login myprofile
 ```
 
 > [!NOTE]
-> When using multi-session support in AWS Management Console you might need to disable auto-logout using `--no-autologout` or `-a`.
+> When using multi-session support in AWS Management Console you might need to avoid using auto-logout using `--auto-logout` or `-a`.
 > Otherwise URL redirect won't work and you'll end up with HTTP/400 response.
 
 If you have credentials already available in your environment, `aws-vault` will use these credentials to sign you in to the AWS console.
