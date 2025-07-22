@@ -28,7 +28,7 @@ type LoginCommandInput struct {
 	Config          vault.ProfileConfig
 	SessionDuration time.Duration
 	NoSession       bool
-	NoAutoLogout    bool
+	AutoLogout      bool
 }
 
 func ConfigureLoginCommand(app *kingpin.Application, a *AwsVault) {
@@ -44,10 +44,10 @@ func ConfigureLoginCommand(app *kingpin.Application, a *AwsVault) {
 		Short('n').
 		BoolVar(&input.NoSession)
 
-	cmd.Flag("no-autologout", "Don't auto logout when starting a new login").
+	cmd.Flag("auto-logout", "Auto logout when starting a new login").
 		Short('a').
-		Envar("AWS_VAULT_NO_AUTOLOGOUT").
-		BoolVar(&input.NoAutoLogout)
+		Envar("AWS_VAULT_AUTO_LOGOUT").
+		BoolVar(&input.AutoLogout)
 
 	cmd.Flag("mfa-token", "The MFA token to use").
 		Short('t').
@@ -201,15 +201,16 @@ func LoginCommand(ctx context.Context, input LoginCommandInput, f *vault.ConfigF
 
 	var loginURL string
 
-	if input.NoAutoLogout {
-		loginURL = fmt.Sprintf("%s?Action=login&Issuer=aws-vault&Destination=%s&SigninToken=%s",
-			loginURLPrefix, url.QueryEscape(destination), url.QueryEscape(signinToken))
-	} else {
-		// logout first
+	if input.AutoLogout {
+		// Use logout URL and redirect to login
 		redirectURL := fmt.Sprintf("%s?Action=login&Issuer=aws-vault&Destination=%s&SigninToken=%s",
 			loginURLPrefix, destination, signinToken)
 		loginURL = fmt.Sprintf("https://us-east-1.signin.aws.amazon.com/oauth?Action=logout&redirect_uri=%s",
 			url.QueryEscape(redirectURL))
+	} else {
+		// Go directly to login
+		loginURL = fmt.Sprintf("%s?Action=login&Issuer=aws-vault&Destination=%s&SigninToken=%s",
+			loginURLPrefix, url.QueryEscape(destination), url.QueryEscape(signinToken))
 	}
 
 	if input.UseStdout {

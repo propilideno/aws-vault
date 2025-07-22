@@ -144,9 +144,9 @@ Here's what you can expect from aws-vault
 
 ## Auto-logout
 
-Since v7.3+ `aws-vault` will automatically try to do a logout first before login when executing `aws-vault login <profile>`.
+Since v7.3+ `aws-vault` introduced option to automatically try and do a logout first, before login when executing `aws-vault login <profile>`.
 
-This behavour can be disabled using `--no-autologout` or `-a` flags! Read more in [USAGE.md](./USAGE.md) file.
+This behavour can be achieved by using `--auto-logout` or `-a` flag! Read more in [USAGE.md](./USAGE.md) file.
 
 ## Development
 
