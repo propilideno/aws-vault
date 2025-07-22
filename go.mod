@@ -10,7 +10,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.70
 	github.com/aws/aws-sdk-go-v2/service/iam v1.43.0
 	github.com/aws/aws-sdk-go-v2/service/sso v1.25.6
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.30.3
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.30.4
 	github.com/aws/aws-sdk-go-v2/service/sts v1.34.1
 	github.com/byteness/keyring v1.3.2
 	github.com/charmbracelet/huh v0.7.0
