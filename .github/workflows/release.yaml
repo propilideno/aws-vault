@@ -65,7 +65,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install upx
+      - name: Install UPX
         run: sudo apt-get update && sudo apt-get install -y upx
 
       - name: Download Artifacts
@@ -74,15 +74,15 @@ jobs:
           path: dist
           merge-multiple: true
 
+      - name: Compress binaries with UPX
+        run: upx dist/aws-vault-{linux,windows-amd64}*
+
       - name: Generate SHA256 checksums
         run: |
           cp dist/aws-vault-* .
           chmod +x dist/* aws-vault-*
           make aws-vault_sha256_checksums.txt
           cp aws-vault_sha256_checksums.txt dist/
-
-      - name: Compress binaries with upx
-        run: upx dist/aws-vault-{linux,windows-amd64}*
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
