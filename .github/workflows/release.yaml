@@ -74,11 +74,11 @@ jobs:
           path: dist
           merge-multiple: true
 
-      # NOTE: Disabled for windows-amd64 due Chocolately AV false positives
+      # NOTE: Disabled for {windows-amd64} due Chocolately AV false positives
       - name: Compress binaries with UPX
         run: |
           chmod +x dist/aws-vault-*
-          upx dist/aws-vault-{linux}*
+          upx dist/aws-vault-linux*
 
       - name: Generate SHA256 checksums
         run: |
