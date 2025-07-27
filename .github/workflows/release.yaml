@@ -76,12 +76,13 @@ jobs:
 
       # NOTE: Disabled for windows-amd64 due Chocolately AV false positives
       - name: Compress binaries with UPX
-        run: upx dist/aws-vault-{linux,freebsd}*
+        run: |
+          chmod +x dist/* aws-vault-*
+          upx dist/aws-vault-{linux,freebsd}*
 
       - name: Generate SHA256 checksums
         run: |
           cp dist/aws-vault-* .
-          chmod +x dist/* aws-vault-*
           make aws-vault_sha256_checksums.txt
           cp aws-vault_sha256_checksums.txt dist/
 
