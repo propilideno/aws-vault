@@ -65,8 +65,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install UPX
-        run: sudo apt-get update && sudo apt-get install -y upx
+      #- name: Install UPX
+      #  run: sudo apt-get update && sudo apt-get install -y upx
 
       - name: Download Artifacts
         uses: actions/download-artifact@v4
@@ -74,8 +74,9 @@ jobs:
           path: dist
           merge-multiple: true
 
-      - name: Compress binaries with UPX
-        run: upx dist/aws-vault-{linux,windows-amd64}*
+      # NOTE: Disabled due Chocolately AV false positives
+      #- name: Compress binaries with UPX
+      #  run: upx dist/aws-vault-{linux,windows-amd64}*
 
       - name: Generate SHA256 checksums
         run: |
