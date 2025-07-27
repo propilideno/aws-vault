@@ -78,7 +78,7 @@ jobs:
       - name: Compress binaries with UPX
         run: |
           chmod +x dist/aws-vault-*
-          upx dist/aws-vault-{linux,freebsd}*
+          upx dist/aws-vault-{linux}*
 
       - name: Generate SHA256 checksums
         run: |
