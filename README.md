@@ -18,7 +18,7 @@ Check out the [announcement blog post](https://99designs.com.au/tech-blog/blog/2
 You can install AWS Vault:
 - by downloading the [latest release](https://github.com/byteness/aws-vault/releases/latest)
 - using [Homebrew](https://formulae.brew.sh/formula/aws-vault): `brew install aws-vault`
-- on Windows with [Chocolatey](https://chocolatey.org/packages/aws-vault): `choco install aws-vault` ([repo](https://github.com/gusztavvargadr/aws-vault-chocolatey) by @gusztavvargadr)
+- on Windows with [Chocolatey](https://chocolatey.org/packages/aws-vault): `choco install aws-vault` ([repo](https://github.com/gusztavvargadr/aws-vault-chocolatey) by [Gusztáv Varga](https://github.com/gusztavvargadr))
 
 ## Documentation
 
@@ -161,6 +161,18 @@ If you are developing or compiling the aws-vault binary yourself, you can [gener
 $ go build .
 $ codesign --sign <Name of certificate created above> ./aws-vault
 ```
+
+## 🧰 Contributing
+
+Report issues/questions/feature requests on in the [issues](https://github.com/byteness/aws-vault/issues/new) section.
+
+Full contributing [guidelines are covered here](.github/CONTRIBUTING.md).
+
+## Maintainers
+
+* [Marko Bevc](https://github.com/mbevc1)
+* Full [contributors list](https://github.com/byteness/aws-vault/graphs/contributors)
+
 
 ## References and Inspiration
 
