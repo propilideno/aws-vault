@@ -254,6 +254,21 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 		return nil, err
 	}
 
+	if hasStoredCredentials || !config.HasRole() {
+		if canUse, reason := t.canUseGetSessionToken(config); !canUse {
+			log.Printf("profile %s: skipping GetSessionToken because %s", config.ProfileName, reason)
+			if !config.HasRole() {
+				return sourcecredsProvider, nil
+			}
+		}
+		t.chainedMfa = config.MfaSerial
+		log.Printf("profile %s: using GetSessionToken %s", config.ProfileName, mfaDetails(false, config))
+		sourcecredsProvider, err = NewSessionTokenProvider(sourcecredsProvider, t.Keyring.Keyring, config, !t.DisableCache)
+		if !config.HasRole() || err != nil {
+			return sourcecredsProvider, err
+		}
+	}
+
 	if config.HasRole() {
 		isMfaChained := config.MfaSerial != "" && config.MfaSerial == t.chainedMfa
 		if isMfaChained {
