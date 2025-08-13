@@ -7,11 +7,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/byteness/keyring"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sso"
 	"github.com/aws/aws-sdk-go-v2/service/ssooidc"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
+	"github.com/byteness/keyring"
 )
 
 var defaultExpirationWindow = 5 * time.Minute
@@ -255,7 +255,7 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 	}
 
 	if hasStoredCredentials || !config.HasRole() {
-		if canUse, reason := t.canUseGetSessionToken(config); !canUse {
+		if canUseGetSessionToken, reason := t.canUseGetSessionToken(config); !canUseGetSessionToken {
 			log.Printf("profile %s: skipping GetSessionToken because %s", config.ProfileName, reason)
 			if !config.HasRole() {
 				return sourcecredsProvider, nil
