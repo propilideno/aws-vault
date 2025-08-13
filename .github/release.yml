@@ -13,9 +13,18 @@ changelog:
       labels:
         - Semver-Minor
         - enhancement
+        - feat
+    - title: Bug fixes 🐛
+      labels:
+        - bug
+        - fix
+    - title: Documentation changes 📝
+      labels:
+        - documentation
+        - docs
     - title: Dependencies 👒
       labels:
         - dependencies
-    - title: Other Changes 🏕
+    - title: Other Changes 🎯
       labels:
         - "*"
