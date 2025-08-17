@@ -267,12 +267,13 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 
 	if isMasterCredentialsProvider(sourcecredsProvider) || isChainedCredentialSource {
 		canUseGetSessionToken, reason := t.canUseGetSessionToken(config)
-		if canUseGetSessionToken {
-			t.chainedMfa = config.MfaSerial
-			log.Printf("profile %s: using GetSessionToken %s", config.ProfileName, mfaDetails(false, config))
-			return NewSessionTokenProvider(sourcecredsProvider, t.Keyring.Keyring, config, !t.DisableCache)
+		if !canUseGetSessionToken {
+			log.Printf("profile %s: skipping GetSessionToken because %s", config.ProfileName, reason)
+			return sourcecredsProvider, nil
 		}
-		log.Printf("profile %s: skipping GetSessionToken because %s", config.ProfileName, reason)
+		t.chainedMfa = config.MfaSerial
+		log.Printf("profile %s: using GetSessionToken %s", config.ProfileName, mfaDetails(false, config))
+		return NewSessionTokenProvider(sourcecredsProvider, t.Keyring.Keyring, config, !t.DisableCache)
 	}
 
 	return sourcecredsProvider, nil
