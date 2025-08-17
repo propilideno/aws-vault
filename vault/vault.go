@@ -7,11 +7,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/99designs/keyring"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/sso"
 	"github.com/aws/aws-sdk-go-v2/service/ssooidc"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
+	"github.com/byteness/keyring"
 )
 
 var defaultExpirationWindow = 5 * time.Minute
