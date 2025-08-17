@@ -257,7 +257,7 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 	isChainedCredentialSource := config.ChainedFromProfile != nil
 
 	if config.HasRole() && !isChainedCredentialSource {
-		isMfaChained := config.SourceProfile != nil && config.MfaSerial == config.SourceProfile.MfaSerial
+		isMfaChained := config.MfaSerial != "" && config.MfaSerial == t.chainedMfa
 		if isMfaChained {
 			config.MfaSerial = ""
 		}
