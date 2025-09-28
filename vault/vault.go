@@ -254,9 +254,9 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 		return nil, err
 	}
 
-	isChainedCredentialSource := config.ChainedFromProfile != nil
+	isRoleChaining := config.ChainedFromProfile != nil && config.ChainedFromProfile.RoleARN != ""
 
-	if config.HasRole() && !isChainedCredentialSource {
+	if config.HasRole() && !isRoleChaining {
 		isMfaChained := config.MfaSerial != "" && config.MfaSerial == t.chainedMfa
 		if isMfaChained {
 			config.MfaSerial = ""
@@ -265,7 +265,7 @@ func (t *TempCredentialsCreator) getSourceCredWithSession(config *ProfileConfig,
 		return NewAssumeRoleProvider(sourcecredsProvider, t.Keyring.Keyring, config, !t.DisableCache)
 	}
 
-	if isMasterCredentialsProvider(sourcecredsProvider) || isChainedCredentialSource {
+	if isMasterCredentialsProvider(sourcecredsProvider) || isRoleChaining {
 		canUseGetSessionToken, reason := t.canUseGetSessionToken(config)
 		if !canUseGetSessionToken {
 			log.Printf("profile %s: skipping GetSessionToken because %s", config.ProfileName, reason)
